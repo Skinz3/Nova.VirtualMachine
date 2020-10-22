@@ -10,6 +10,7 @@
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
 template<class... Ts> overloaded(Ts...)->overloaded<Ts...>;
 
+// known issue : field Humain h = -> Human(x) execute expression with no current method in call stack.
 
 void Exec::Run(NovFile& file)
 {
@@ -24,6 +25,7 @@ void Exec::Run(NovFile& file)
 	context.callStack.push_back(call);
 
 	Execute(&context, mainMethod->block);
+
 }
 
 void Exec::Execute(RuntimeContext* context, ByteBlock* block)

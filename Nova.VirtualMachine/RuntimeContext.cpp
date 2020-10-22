@@ -23,9 +23,6 @@ void RuntimeContext::Initialize()
 		}
 	}
 }
-
-
-
 RuntimeContext::RuntimeElement RuntimeContext::GetConstant(int id)
 {
 	return this->novFile->constants[id];

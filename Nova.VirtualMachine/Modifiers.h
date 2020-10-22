@@ -1,6 +1,6 @@
 #pragma once
 
-enum Modifiers
+enum class Modifiers
 {
 	Public = 0x1,
 	Private = 0x2,

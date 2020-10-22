@@ -14,8 +14,6 @@ int main(int argc, char* argv[])
 	}
 	std::string fileName = argv[1];
 
-	Logger::Log(fileName);
-
 	NovFile file(fileName);
 
 	if (!file.Deserialize())
