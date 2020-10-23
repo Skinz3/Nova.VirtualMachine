@@ -9,4 +9,6 @@ enum Natives : int
 	VectAdd = 4,
 	VectAt = 5,
 	VectSet = 6,
+	StrGet = 7,
+	NewLine,
 };

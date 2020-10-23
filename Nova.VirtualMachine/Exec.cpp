@@ -314,6 +314,7 @@ void Exec::DispatchNative(RuntimeContext* context, int& nativeType)
 	{
 		std::visit(overloaded
 			{
+					[](char arg) { std::cout << arg; },
 					[](Null* arg) { std::cout << "null"; },
 					[](bool arg) { std::cout << (arg ? "true" : "false"); },
 					[](RuntimeStruct* arg) { std::cout << "{" << arg->typeClass->name << "}"; },
@@ -323,6 +324,13 @@ void Exec::DispatchNative(RuntimeContext* context, int& nativeType)
 			},
 			context->PopStack());
 
+		break;
+	}
+	case Natives::StrGet:
+	{
+		int index = std::get<int>(context->PopStack());
+		string* value = std::get<string*>(context->PopStack());
+		context->PushStack(value->at(index));
 		break;
 	}
 	case Natives::Readl:
@@ -360,6 +368,11 @@ void Exec::DispatchNative(RuntimeContext* context, int& nativeType)
 		int index = std::get<int>(context->PopStack());
 		RuntimeVector* vect = std::get<RuntimeVector*>(context->PopStack());
 		context->PushStack(vect->At(index));
+		break;
+	}
+	case Natives::NewLine:
+	{
+		cout << endl;
 		break;
 	}
 	default:

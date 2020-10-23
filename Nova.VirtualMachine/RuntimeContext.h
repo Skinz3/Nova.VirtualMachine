@@ -17,7 +17,7 @@ class RuntimeContext
 public:
 	static Null* NULL_VALUE;
 
-	using RuntimeElement = std::variant<int, RuntimeStruct*, std::string*, bool, Null*, RuntimeVector*>;
+	using RuntimeElement = std::variant<int, char, RuntimeStruct*, std::string*, bool, Null*, RuntimeVector* > ;
 
 	NovFile* novFile;
 
